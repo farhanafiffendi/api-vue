@@ -2,7 +2,9 @@ const { newuser, group } = require('../../models');
 
 exports.addGroup = async (req, res) => {
     try {
-        const artisData = await group.create(req.body)
+        let artisData = await group.create(req.body)
+
+        artisData = JSON.parse(JSON.stringify(artisData));
 
         res.send({
             status: 'success',
